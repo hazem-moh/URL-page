@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Query Parameter Handling</title>
+</head>
+<body>
+  <h1>Query Parameter Handling</h1>
+  <label for="paramInput">Enter parameter value:</label>
+  <input type="text" id="paramInput">
+  <button onclick="handleQueryParameters()">Run</button>
+
+  <script>
+    function handleQueryParameters() {
+      // Parse the current URL
+      const urlParams = new URLSearchParams(window.location.search);
+
+      // Get the value from the input field
+      const inputValue = document.getElementById('paramInput').value;
+
+      // Update an existing query parameter or add a new one with the input value
+      if (inputValue) {
+        urlParams.set('paramName', inputValue);
+        console.log('Updated value of paramName:', inputValue);
+      }
+
+      // Reconstruct the URL with modified query parameters
+      const newUrl = `new-page.html?${urlParams.toString()}`;
+      console.log('New URL:', newUrl);
+
+      // Redirect to the existing page with the modified query parameters
+      window.location.href = newUrl;
+    }
+  </script>
+</body>
+</html>
+
