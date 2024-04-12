@@ -1,22 +1,20 @@
-// NextPage.js
-import { useEffect, useState } from 'react';
+// Page.jsx
 
-function NextPage() {
-    const [inputValue, setInputValue] = useState('');
 
-    useEffect(() => {
-        // Retrieve input value from URL when component mounts
-        const urlParams = new URLSearchParams(window.location.search);
-        const input = urlParams.get('input');
-        setInputValue(input);
-    }, []);
+const Page = ({ queryParams }) => {
+    // Parse query parameters
+    const params = new URLSearchParams(queryParams);
+
+    // Get the value of the paramName query parameter
+    const paramName = params.get('paramName');
 
     return (
         <div>
-            <h2>Next Page</h2>
-            <p>You typed: {inputValue}</p>
+            <h2 className=' bg-gray-500 text-white text-4xl'>Page Component</h2>
+            <p>This component receives and displays query parameters.</p>
+            <p>Parameter value: {paramName}</p>
         </div>
     );
-}
+};
 
-export default NextPage;
+export default Page;

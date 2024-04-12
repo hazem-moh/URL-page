@@ -1,32 +1,43 @@
-// HomePage.js
-import { useState } from 'react';
+// App.jsx
+import  { useState } from 'react';
+import Page from './page';
 
-function HomePage() {
+const App = () => {
   const [inputValue, setInputValue] = useState('');
 
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
+  const handleQueryParameters = () => {
+    const urlParams = new URLSearchParams(window.location.search);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Update the URL with the input value
-    window.location.href = `.page${inputValue}`;
+    if (inputValue) {
+      urlParams.set('paramName', inputValue);
+      console.log('Updated value of paramName:', inputValue);
+    }
+
+    const queryString = urlParams.toString();
+      // Open the Page component in a new window
+  const newWindow = window.open(`/page?${queryString}`,"_self");
+
+    // Navigate to Page component with query parameters
+    window.location.href = `/page?${queryString}`;
   };
 
   return (
-    <div className=' mx-auto mt-16 w-52'>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={inputValue}
-          onChange={handleInputChange}
-          placeholder="Type Username"
-        />
-        <button type="submit" className=' bg-slate-400'>Submit</button>
-      </form>
+    <div>
+      <h1>Query Parameter Handling</h1>
+      <label htmlFor="paramInput">Enter parameter value:</label>
+      <input
+        type="text"
+        id="paramInput"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+      <button onClick={handleQueryParameters}>Run</button>
+
+      {window.location.pathname === '/page' && (
+        <Page queryParams={window.location.search} />
+      )}
     </div>
   );
-}
+};
 
-export default HomePage;
+export default App;
