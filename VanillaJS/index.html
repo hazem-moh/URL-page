@@ -22,12 +22,10 @@
       // Update an existing query parameter or add a new one with the input value
       if (inputValue) {
         urlParams.set('paramName', inputValue);
-        console.log('Updated value of paramName:', inputValue);
       }
 
       // Reconstruct the URL with modified query parameters
       const newUrl = `new-page.html?${urlParams.toString()}`;
-      console.log('New URL:', newUrl);
 
       // Redirect to the existing page with the modified query parameters
       window.location.href = newUrl;
