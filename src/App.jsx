@@ -11,7 +11,7 @@ function HomePage() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Update the URL with the input value
-    window.location.href = `/page${inputValue}`;
+    window.location.href = `.page${inputValue}`;
   };
 
   return (
@@ -21,7 +21,7 @@ function HomePage() {
           type="text"
           value={inputValue}
           onChange={handleInputChange}
-          placeholder="Type something..."
+          placeholder="Type Username"
         />
         <button type="submit" className=' bg-slate-400'>Submit</button>
       </form>
