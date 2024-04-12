@@ -14,8 +14,7 @@ const App = () => {
     }
 
     const queryString = urlParams.toString();
-      // Open the Page component in a new window
-  const newWindow = window.open(`/page?${queryString}`,"_self");
+
 
     // Navigate to Page component with query parameters
     window.location.href = `/page?${queryString}`;
@@ -34,7 +33,7 @@ const App = () => {
       <button onClick={handleQueryParameters}>Run</button>
 
       {window.location.pathname === '/page' && (
-        <Page queryParams={window.location.search} />
+        <Page  queryParams={window.location.search} />
       )}
     </div>
   );
