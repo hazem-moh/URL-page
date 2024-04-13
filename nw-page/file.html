@@ -1,0 +1,31 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Assignment</title>
+</head>
+
+<body>
+    <form id="urlForm">
+        <label for="urlInput">Enter URL:</label>
+        <input type="text" id="urlInput" name="urlInput">
+        <button type="submit">Go to URL</button>
+    </form>
+
+    <script>
+        document.getElementById('urlForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get the value from the input field
+            const url = document.getElementById('urlInput').value;
+
+            // Navigate to the new page
+            window.location.href = url;
+        });
+    </script>
+</body>
+
+</html>

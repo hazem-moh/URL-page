@@ -17,7 +17,7 @@ const App = () => {
 
 
     // Navigate to Page component with query parameters
-    window.location.href = `/page?${queryString}`;
+    window.location.href = `/page?=${queryString}`;
   };
 
   return (
@@ -33,7 +33,7 @@ const App = () => {
       <button onClick={handleQueryParameters}>Run</button>
 
       {window.location.pathname === '/page' && (
-        <Page  queryParams={window.location.search} />
+        <Page queryParams={window.location.search}/>
       )}
     </div>
   );
